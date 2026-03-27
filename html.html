@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тёплый свет на кухне</title>
+<style>
+body {margin:0;font-family:Arial;background:#0d0d0d;color:white;scroll-behavior:smooth;}
+
+header {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1600x900');
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+}
+
+header h1 {font-size:60px;animation: fadeIn 2s;}
+header p {font-size:20px;animation: fadeIn 3s;}
+
+section {padding:60px 20px;max-width:1000px;margin:auto;}
+
+.timeline {border-left:3px solid red;padding-left:20px;}
+.timeline div {margin-bottom:20px;opacity:0;transform:translateX(-20px);transition:0.5s;}
+.timeline div.visible {opacity:1;transform:translateX(0);} 
+
+.facts {background:#111;padding:20px;border-radius:10px;}
+
+.quiz {background:#111;padding:20px;border-radius:10px;text-align:center;}
+button {padding:10px 20px;margin:5px;cursor:pointer;}
+
+footer {text-align:center;padding:20px;background:#111;}
+
+@keyframes fadeIn {from{opacity:0;}to{opacity:1;}}
+</style>
+</head>
+<body>
+
+<header>
+<div>
+<h1>Тёплый свет на кухне</h1>
+<p>История о простых людях и важных разговорах</p>
+</div>
+</header>
+
+<section>
+<h2>Краткий сюжет</h2>
+<p>
+Вова, уставший после смены, возвращается домой, где его ждёт Анна. Их жизнь — это рутина: работа, магазин, кухня. 
+Соседский парень Тошик всё чаще заходит к ним и постепенно становится частью их жизни. 
+
+С появлением новой соседки Ольги атмосфера меняется — она говорит прямо и открыто. 
+На работе у Вовы проблемы: коллега Сергей намекает на сокращения. 
+
+Также в доме живут Ирина — тихая пенсионерка, наблюдающая за всеми, и Пётр — бывший военный, редко общающийся с соседями. 
+
+Обычные события начинают сближать героев. В один вечер отключается свет, и они собираются на кухне при свечах. 
+Этот разговор меняет всё.
+</p>
+</section>
+
+<section>
+<h2>Персонажи</h2>
+<div class="timeline" id="timeline">
+<div>Вова — муж, 36 лет</div>
+<div>Анна — жена, 34 года</div>
+<div>Тошик — соседский парень, 14 лет</div>
+<div>Ольга — соседка, ~40 лет</div>
+<div>Сергей — коллега, 38 лет</div>
+<div>Ирина — пенсионерка, ~65 лет</div>
+<div>Пётр — бывший военный, ~50 лет</div>
+</div>
+</section>
+
+<section>
+<h2>Интересные факты</h2>
+<div class="facts">
+<p>💡 Фильм показывает, как обычные разговоры могут менять людей</p>
+<p>💡 Основное действие происходит в одной квартире</p>
+<p>💡 Свет и тьма — символы внутреннего состояния героев</p>
+</div>
+</section>
+
+<section>
+<h2>Мини-викторина</h2>
+<div class="quiz">
+<p id="question">Кто стал чаще заходить в гости к Вове и Анне?</p>
+<button onclick="answer(1)">Сергей</button>
+<button onclick="answer(2)">Тошик</button>
+<button onclick="answer(3)">Пётр</button>
+<p id="result"></p>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Исторический проект</p>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.timeline div').forEach(el => {
+    const pos = el.getBoundingClientRect().top;
+    if(pos < window.innerHeight - 50){
+      el.classList.add('visible');
+    }
+  });
+});
+
+function answer(num){
+  const r = document.getElementById('result');
+  if(num === 2){
+    r.innerText = '✅ Верно! Тошик стал частью их жизни';
+    r.style.color = 'lightgreen';
+  } else {
+    r.innerText = '❌ Неверно, подумай ещё';
+    r.style.color = 'red';
+  }
+}
+</script>
+
+</body>
+</html>
